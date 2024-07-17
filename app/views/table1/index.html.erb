@@ -1,0 +1,55 @@
+<h1>Table Data</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Index#</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @data.each do |table1| %>
+  <tr>
+    <td><%= table1.index %></td>
+    <td><%= table1.value %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+
+
+<% # Extract values from the data for Table 2 %>
+<% value_A5 = @data.find { |table1| table1.index == "A5" }&.value || 0 %>
+<% value_A20 = @data.find { |table1| table1.index== "A20" }&.value || 0 %>
+<% value_A15 = @data.find { |table1| table1.index == "A15" }&.value || 0 %>
+<% value_A7 = @data.find { |table1| table1.index == "A7" }&.value || 0 %>
+<% value_A13 = @data.find { |table1| table1.index == "A13" }&.value || 0 %>
+<% value_A12 = @data.find { |table1| table1.index == "A12" }&.value || 0 %>
+
+<% # Calculate values for Table 2 %>
+<% alpha_value = value_A5 + value_A20 %>
+<% beta_value = value_A15 / value_A7 %>
+<% charlie_value = value_A13 * value_A12 %>
+
+<h1>Table 2</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alpha</td>
+      <td><%= alpha_value %></td>
+    </tr>
+    <tr>
+      <td>Beta</td>
+      <td><%= beta_value %></td>
+    </tr>
+    <tr>
+      <td>Charlie</td>
+      <td><%= charlie_value %></td>
+    </tr>
+  </tbody>
+</table>
