@@ -13,11 +13,10 @@
 # gem "pg"
 #
 default: &default
-  adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
 
 development:
   <<: *default
@@ -79,6 +78,4 @@ test:
 #
 production:
   <<: *default
-  database: table_production
-  username: table
-  password: <%= ENV["TABLE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
